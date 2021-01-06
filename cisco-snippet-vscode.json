@@ -1,0 +1,921 @@
+{
+	// Author: Nicola Ricciardi
+
+	// snippets
+	"ip-address-snippet": {
+		"scope": "plaintext",	
+		"prefix": "ip-address-snippet",
+		"body": "ip address $1.$2.$3.$4 $5.$6.$7.$8",
+		"description": "ip address x.x.x.x x.x.x.x" 
+	},
+
+	"save-snippet": {
+		"scope": "plaintext",
+		"prefix": "save-snippet",
+		"body": "do copy running-config startup-config",
+		"description": "Save changes"
+	},
+
+	"router-rip-snippet":{
+		"scope": "plaintext",
+		"prefix": "router-rip-snippet",
+		"body": ["router rip", "version 2", "network $1.$2.$3.$4", "passive-interface ${5:gigabitEthernet} ${6:0/0}", "${7:no} auto-summary$0"],
+		"description": "snippet for router rip"
+	},
+
+	"router-dhcp-snippet":{
+		"scope": "plaintext",
+		"prefix": "router-dhcp-snippet",
+		"body": ["ip dhcp pool ${1:namePool}", "network $2.$3.$4.$5 $6.$7.$8.$9", "default-router $10.$11.$12.$13", "domain-name ${14:domainName}", "dns-server $15.$16.$17.$18", "ip dhcp excluded-address $19.$20.$21.$22", "exit"],
+		"description": "snippet for dhcp on router"	
+	},
+
+	// command "https://www.netwrix.com/cisco_commands_cheat_sheet.html"
+	"exit":{
+		"scope": "plaintext",
+		"prefix": "exit",
+		"body": "exit",
+		"description": "exit"
+	},
+	"enable":{
+		"scope": "plaintext",
+		"prefix": "enable",
+		"body": "enable",
+		"description": "Logs you into enable mode, which is also known as user exec mode or privileged mode"
+	},
+	"configure terminal":{
+		"scope": "plaintext",
+		"prefix": "configure terminal",
+		"body": "configure terminal",
+		"description": "Logs you into configuration mode"
+	},
+	"interface {interface} {number}":{
+		"scope": "plaintext",
+		"prefix": "interface",
+		"body": "interface ${1:gigabitEthernet} ${2:0/0}",
+		"description": "Enters interface configuration mode for the specified fast ethernet interface"
+	},
+	"reload":{
+		"scope": "plaintext",
+		"prefix": "reload",
+		"body": "reload",
+		"description": "An exec mode command that reboots a Cisco switch or router"
+	},
+	"hostname {name}":{
+		"scope": "plaintext",
+		"prefix": "hostname",
+		"body": "hostname ${1:name}",
+		"description": "Sets a host name to the current Cisco network device"
+	},
+	"copy {from-location} {to-location}":{
+		"scope": "plaintext",
+		"prefix": "copy ${1:running-config} ${2:startup-config}",
+		"body": "copy ",
+		"description": "An enable mode command that copies files from one file location to another"
+	},
+	"copy running-config startup-config":{
+		"scope": "plaintext",
+		"prefix": "copy running-config startup-config",
+		"body": "copy running-config startup-config",
+		"description": "An enable mode command that saves the active config, replacing the startup config when a Cisco network device initializes"
+	},
+	"copy":{
+		"scope": "plaintext",
+		"prefix": "copy",
+		"body": "copy",
+		"description": "An enable mode command that saves the active config, replacing the startup config when a Cisco network device initializes"
+	},
+	"running-config":{
+		"scope": "plaintext",
+		"prefix": "running-config",
+		"body": "running-config",
+		"description": "An enable mode command that saves the active config, replacing the startup config when a Cisco network device initializes"
+	},
+	"startup-config":{
+		"scope": "plaintext",
+		"prefix": "startup-config",
+		"body": "startup-config",
+		"description": "An enable mode command that saves the active config, replacing the startup config when a Cisco network device initializes"
+	},
+	"do":{
+		"scope": "plaintext",
+		"prefix": "do",
+		"body": "do",
+		"description": "do"
+	},
+
+	"copy startup-config running-config":{
+		"scope": "plaintext",
+		"prefix": "copy startup-config running-config",
+		"body": "copy startup-config running-config",
+		"description": "An enable mode command that merges the startup config with the currently active config in RAM"
+	},
+	"ip address {ip-address} {mask}":{
+		"scope": "plaintext",
+		"prefix": "ip address",
+		"body": "ip address $1.$2.$3.$4 $5.$6.$7.$8",
+		"description": "An enable mode command that deletes the startup config"
+	},
+	"ip default-gateway {ip-address}":{
+		"scope": "plaintext",
+		"prefix": "ip default-gateway",
+		"body": "ip default-gateway $1.$2.$3.$4",
+		"description": "Assigns an IP address and a subnet mask"
+	},
+	"show running-config":{
+		"scope": "plaintext",
+		"prefix": "show running-config",
+		"body": "show running-config",
+		"description": "Used in interface configuration mode. “Shutdown” shuts down the interface, while “no shutdown” brings up the interface."
+	},
+	"description {name-string}":{
+		"scope": "plaintext",
+		"prefix": "description",
+		"body": "description ${1:description}",
+		"description": "Sets the default gateway on a Cisco device"
+	},
+	"show running-config interface {interface} {slot/number}":{
+		"scope": "plaintext",
+		"prefix": "show running-config interface",
+		"body": "show running-config interface ${1:gigabitEthernet} ${2:0/0}",
+		"description": "An enable mode command that displays the current configuration"
+	},
+	"show ip interface {number}":{
+		"scope": "plaintext",
+		"prefix": "show ip interface ",
+		"body": "show ip interface ",
+		"description": "A config interface command to describe or name an interface"
+	},
+	"ip name-server {serverip-1} {serverip-2}":{
+		"scope": "plaintext",
+		"prefix": "ip name-server",
+		"body": "ip name-server ${1:serverip-1} ${2:serverip-2}",
+		"description": "An enable mode command to display the running configuration for a specific interface"
+	},
+	"ping {hostname | system-address | ip-address}":{
+		"scope": "plaintext",
+		"prefix": "ping",
+		"body": "ping ${1:127.0.0.1}",
+		"description": "Displays the usability status of interfaces that are configured for IP"
+	},
+	"speed {10 | 100 | 1000 | auto}":{
+		"scope": "plaintext",
+		"prefix": "speed",
+		"body": "speed ${1:auto}",
+		"description": "A configure mode command that sets the IP addresses of DNS servers"
+	},
+	"duplex {auto | full | half}":{
+		"scope": "plaintext",
+		"prefix": "duplex",
+		"body": "duplex ${1:auto}",
+		"description": "Troubleshooting Commands"
+	},
+	"show mac address-table":{
+		"scope": "plaintext",
+		"prefix": "show mac address-table",
+		"body": "show mac address-table",
+		"description": "Used in enable mode to diagnose basic network connectivity"
+	},
+	"show cdp":{
+		"scope": "plaintext",
+		"prefix": "show cdp",
+		"body": "show cdp",
+		"description": "An interface mode command that manually sets the speed to the specified value or negotiates it automatically"
+	},
+	"show cdp neighbors":{
+		"scope": "plaintext",
+		"prefix": "show cdp neighbors",
+		"body": "show cdp neighbors",
+		"description": "An interface mode command that manually sets duplex to half, full or auto"
+	},
+	"show interfaces":{
+		"scope": "plaintext",
+		"prefix": "show interfaces",
+		"body": "show interfaces",
+		"description": "A configuration mode command that enables or disables Cisco Discovery Protocol (CDP) for the device"
+	},
+	"show interface status":{
+		"scope": "plaintext",
+		"prefix": "show interface status",
+		"body": "show interface status",
+		"description": "Displays the MAC address table"
+	},
+	"show interfaces switchport":{
+		"scope": "plaintext",
+		"prefix": "show interfaces switchport",
+		"body": "show interfaces switchport",
+		"description": "Shows whether CDP is enabled globally"
+	},
+	"show interfaces trunk":{
+		"scope": "plaintext",
+		"prefix": "show interfaces trunk",
+		"body": "show interfaces trunk",
+		"description": "Lists summary information about each neighbor connected to this device; the “detail” option lists detailed information about each neighbor"
+	},
+	"show vtp status":{
+		"scope": "plaintext",
+		"prefix": "show vtp status",
+		"body": "show vtp status",
+		"description": "Displays detailed information about interface status, settings and counters"
+	},
+	"ip route {network-number} {network-mask} {ip-address | interface}":{
+		"scope": "plaintext",
+		"prefix": "ip route",
+		"body": "ip route $1.$2.$3.$4 $5.$6.$7.$8 $9",
+		"description": "Displays the interface line status"
+	},
+	"router rip":{
+		"scope": "plaintext",
+		"prefix": "router rip",
+		"body": "router rip",
+		"description": "Displays a large variety of configuration settings and current operational status, including VLAN trunking details."
+	},
+	"network {ip-address}":{
+		"scope": "plaintext",
+		"prefix": "network",
+		"body": "network $1.$2.$3.$4",
+		"description": "Lists information about the currently operational trunks and the VLANs supported by those trunks"
+	},
+	"version 2":{
+		"scope": "plaintext",
+		"prefix": "version 2",
+		"body": "version 2",
+		"description": "Lists each VLAN and all interfaces assigned to that VLAN but does not include trunks"
+	},
+	"version":{
+		"scope": "plaintext",
+		"prefix": "version",
+		"body": "version",
+		"description": "Lists each VLAN and all interfaces assigned to that VLAN but does not include trunks"
+	},
+
+	"no auto-summary":{
+		"scope": "plaintext",
+		"prefix": "no auto-summary",
+		"body": "no auto-summary",
+		"description": "Lists the current VTP status, including the current mode"
+	},
+	"default-information originate":{
+		"scope": "plaintext",
+		"prefix": "default-information originate",
+		"body": "default-information originate",
+		"description": "Routing and VLAN Commands"
+	},
+	"passive-interface {interface}":{
+		"scope": "plaintext",
+		"prefix": "passive-interface",
+		"body": "passive-interface $1",
+		"description": "Sets a static route in the IP routing table"
+	},
+	"show ip rip database":{
+		"scope": "plaintext",
+		"prefix": "show ip rip database",
+		"body": "show ip rip database",
+		"description": "Enables a Routing Information Protocol (RIP) routing process, which places you in router configuration mode"
+	},
+	"ip nat {inside | outside}":{
+		"scope": "plaintext",
+		"prefix": "ip nat",
+		"body": "ip nat ${1:?}",
+		"description": "In router configuration mode, associates a network with a RIP routing process"
+	},
+	"ip nat inside source {list{access-list-number | access-list-name}} interface type number[overload]":{
+		"scope": "plaintext",
+		"prefix": "ip nat inside source",
+		"body": "ip nat inside source ${1:?}",
+		"description": "In router configuration mode, configures the software to receive and send only RIP version 2 packets"
+	},
+	"ip nat inside source static {local-ip} {global-ip}":{
+		"scope": "plaintext",
+		"prefix": "ip nat inside source static",
+		"body": "ip nat inside source static ${1:local-ip} ${2:global-ip}",
+		"description": "In router configuration mode, disables automatic summarization"
+	},
+	"switchport access vlan":{
+		"scope": "plaintext",
+		"prefix": "switchport access vlan",
+		"body": "switchport access vlan",
+		"description": "In router configuration mode, sets only that interface to passive RIP mode. In passive RIP mode, RIP routing updates are accepted by, but not sent out of, the specified interface."
+	},
+	"switchport trunk encapsulation dot1q":{
+		"scope": "plaintext",
+		"prefix": "switchport trunk encapsulation dot1q",
+		"body": "switchport trunk encapsulation dot1q",
+		"description": "Displays the contents of the RIP routing database"
+	},
+	"switchport access":{
+		"scope": "plaintext",
+		"prefix": "switchport access",
+		"body": "switchport access",
+		"description": "An interface configuration mode command to designate that traffic originating from or destined for the interface is subject to NAT"
+	},
+	"vlan vlan-id {name vlan-name}":{
+		"scope": "plaintext",
+		"prefix": "vlan vlan-id",
+		"body": "vlan vlan-id ${1:1-32}",
+		"description": "A configuration mode command to establish dynamic source translation. Use of the “list” keyword enables you to use an ACL to identify the traffic that will be subject to NAT. The “overload” option enables the router to use one global address for many local addresses."
+	},
+	"switchport mode access":{
+		"scope": "plaintext",
+		"prefix": "switchport mode access",
+		"body": "switchport mode access",
+		"description": "A configuration mode command to establish a static translation between an inside local address and an inside global address"
+	},
+	"switchport mode trunk":{
+		"scope": "plaintext",
+		"prefix": "switchport mode trunk",
+		"body": "switchport mode trunk",
+		"description": "A configuration mode command to establish a static translation between an inside local address and an inside global address"
+	},
+	"switchport trunk {encapsulation dot1q vlan-id}":{
+		"scope": "plaintext",
+		"prefix": "switchport trunk",
+		"body": "switchport trunk",
+		"description": "Creates a VLAN and enters VLAN configuration mode for further definitions"
+	},
+	"trunk":{
+		"scope": "plaintext",
+		"prefix": "trunk",
+		"body": "trunk",
+		"description": "Creates a VLAN and enters VLAN configuration mode for further definitions"
+	},
+	"mode":{
+		"scope": "plaintext",
+		"prefix": "mode",
+		"body": "mode",
+		"description": "Creates a VLAN and enters VLAN configuration mode for further definitions"
+	},
+	"access":{
+		"scope": "plaintext",
+		"prefix": "access",
+		"body": "access",
+		"description": "Creates a VLAN and enters VLAN configuration mode for further definitions"
+	},
+
+	"encapsulation dot1q vlan-id":{
+		"scope": "plaintext",
+		"prefix": "encapsulation dot1q vlan-id",
+		"body": "encapsulation dot1q vlan-id",
+		"description": "Sets the VLAN that the interface belongs to."
+	},
+	"encapsulation":{
+		"scope": "plaintext",
+		"prefix": "encapsulation",
+		"body": "encapsulation",
+		"description": "Sets the VLAN that the interface belongs to."
+	},
+	"dot1q":{
+		"scope": "plaintext",
+		"prefix": "dot1q",
+		"body": "dot1q",
+		"description": "Sets the VLAN that the interface belongs to."
+	},
+
+	"ip address dhcp":{
+		"scope": "plaintext",
+		"prefix": "ip address dhcp",
+		"body": "ip address dhcp",
+		"description": "Specifies 802.1Q encapsulation on the trunk link."
+	},
+	"address":{
+		"scope": "plaintext",
+		"prefix": "address",
+		"body": "address",
+		"description": "address"
+	},
+
+	"ip dhcp pool name":{
+		"scope": "plaintext",
+		"prefix": "ip dhcp pool name",
+		"body": "ip dhcp pool name",
+		"description": "Assigns this port to a VLAN"
+	},
+	"pool":{
+		"scope": "plaintext",
+		"prefix": "pool",
+		"body": "pool",
+		"description": "Assigns this port to a VLAN"
+	},
+	"name":{
+		"scope": "plaintext",
+		"prefix": "name",
+		"body": "name",
+		"description": "Assigns this port to a VLAN"
+	},
+
+
+	"domain-name {domain}":{
+		"scope": "plaintext",
+		"prefix": "domain-name",
+		"body": "domain-name ${1:cisco.com}",
+		"description": "Configures a specific VLAN name (1 to 32 characters)"
+	},
+	"network {network-number [mask]}":{
+		"scope": "plaintext",
+		"prefix": "network",
+		"body": "network $1.$2.$3.$4",
+		"description": "Configures the VLAN membership mode of a port. The access port is set to access unconditionally and operates as a non-trunking, single VLAN interface that sends and receives non-encapsulated (non-tagged) frames. An access port can be assigned to only one VLAN. The trunk port sends and receives encapsulated (tagged) frames that identify the VLAN of origination. A trunk is a point-to-point link between two switches or between a switch and a router."
+	},
+
+	"ip dhcp excluded-address {ip-address} {last-ip-address}":{
+		"scope": "plaintext",
+		"prefix": "ip dhcp excluded-address",
+		"body": "ip dhcp excluded-address $1.$2.$3.$4",
+		"description": "Sets the trunk characteristics when the interface is in trunking mode. In this mode, the switch supports simultaneous tagged and untagged traffic on a port."
+	},
+	"ip helper-address {ip-address}":{
+		"scope": "plaintext",
+		"prefix": "ip helper-address",
+		"body": "ip helper-address $1.$2.$3.$4",
+		"description": "A configuration mode command that defines the matching criteria to map 802.1Q frames ingress on an interface to the appropriate service instance"
+	},
+	"dhcp":{
+		"scope": "plaintext",
+		"prefix": "dhcp",
+		"body": "dhcp",
+		"description": "Sets the trunk characteristics when the interface is in trunking mode. In this mode, the switch supports simultaneous tagged and untagged traffic on a port."
+	},
+	"excluded-address":{
+		"scope": "plaintext",
+		"prefix": "excluded-address",
+		"body": "excluded-address",
+		"description": "Sets the trunk characteristics when the interface is in trunking mode. In this mode, the switch supports simultaneous tagged and untagged traffic on a port."
+	},
+	"helper-address":{
+		"scope": "plaintext",
+		"prefix": "helper-address",
+		"body": "helper-address $1.$2.$3.$4",
+		"description": "A configuration mode command that defines the matching criteria to map 802.1Q frames ingress on an interface to the appropriate service instance"
+	},
+
+
+	"default-router":{
+		"scope": "plaintext",
+		"prefix": "default-router",
+		"body": "default-router $1.$2.$3.$4",
+		"description": "DHCP Commands"
+	},
+	"password {password}":{
+		"scope": "plaintext",
+		"prefix": "password",
+		"body": "password ${1:psw}",
+		"description": "A configuration mode command to acquire an IP address on an interface via DHCP"
+	},
+	"username {username}":{
+		"scope": "plaintext",
+		"prefix": "username",
+		"body": "username ${1:user}",
+		"description": "A configuration mode command to configure a DHCP address pool on a DHCP server and enter DHCP pool configuration mode"
+	},
+	"enable password {password}":{
+		"scope": "plaintext",
+		"prefix": "enable password",
+		"body": "enable password ${1:psw}",
+		"description": "Used in DHCP pool configuration mode to specify the domain name for a DHCP client"
+	},
+	"enable secret {password}":{
+		"scope": "plaintext",
+		"prefix": "enable secret",
+		"body": "enable secret ${1:psw}",
+		"description": "An interface configuration mode command to enable forwarding of UDP broadcasts, including BOOTP, received on an interface"
+	},
+	"secret":{
+		"scope": "plaintext",
+		"prefix": "secret",
+		"body": "secret",
+		"description": "An interface configuration mode command to enable forwarding of UDP broadcasts, including BOOTP, received on an interface"
+	},
+	"service password-encryption":{
+		"scope": "plaintext",
+		"prefix": "service password-encryption",
+		"body": "service password-encryption",
+		"description": "Used in DHCP pool configuration mode to specify the default router list for a DHCP client"
+	},
+	"ip domain-name {name}":{
+		"scope": "plaintext",
+		"prefix": "ip domain-name",
+		"body": "ip domain-name ${1:name}",
+		"description": "Security Commands"
+	},
+
+	"crypto key generate rsa":{
+		"scope": "plaintext",
+		"prefix": "crypto key generate rsa",
+		"body": "crypto key generate rsa",
+		"description": "Lists the password that is required if the login command (with no other parameters) is conﬁgured"
+	},
+	"crypto":{
+		"scope": "plaintext",
+		"prefix": "crypto",
+		"body": "crypto",
+		"description": "Lists the password that is required if the login command (with no other parameters) is conﬁgured"
+	},
+	"key":{
+		"scope": "plaintext",
+		"prefix": "key",
+		"body": "key",
+		"description": "Lists the password that is required if the login command (with no other parameters) is conﬁgured"
+	},
+	"generate":{
+		"scope": "plaintext",
+		"prefix": "generate",
+		"body": "generate",
+		"description": "Lists the password that is required if the login command (with no other parameters) is conﬁgured"
+	},
+	"rsa":{
+		"scope": "plaintext",
+		"prefix": "rsa",
+		"body": "rsa",
+		"description": "Lists the password that is required if the login command (with no other parameters) is conﬁgured"
+	},
+
+
+	"transport input telnet":{
+		"scope": "plaintext",
+		"prefix": "transport input telnet",
+		"body": "transport input telnet",
+		"description": "A global command that deﬁnes one of possibly multiple user names and associated passwords used for user authentication. It is used when the login local line conﬁguration command has been used."
+	},
+	"transport input ssh":{
+		"scope": "plaintext",
+		"prefix": "transport input ssh",
+		"body": "transport input ssh",
+		"description": "A global command that deﬁnes one of possibly multiple user names and associated passwords used for user authentication. It is used when the login local line conﬁguration command has been used."
+	},
+	"transport":{
+		"scope": "plaintext",
+		"prefix": "transport",
+		"body": "transport",
+		"description": "A global command that deﬁnes one of possibly multiple user names and associated passwords used for user authentication. It is used when the login local line conﬁguration command has been used."
+	},
+	"input":{
+		"scope": "plaintext",
+		"prefix": "input",
+		"body": "input",
+		"description": "A global command that deﬁnes one of possibly multiple user names and associated passwords used for user authentication. It is used when the login local line conﬁguration command has been used."
+	},
+	"ssh":{
+		"scope": "plaintext",
+		"prefix": "ssh",
+		"body": "ssh",
+		"description": "A global command that deﬁnes one of possibly multiple user names and associated passwords used for user authentication. It is used when the login local line conﬁguration command has been used."
+	},
+	"telnet":{
+		"scope": "plaintext",
+		"prefix": "telnet",
+		"body": "telnet",
+		"description": "A global command that deﬁnes one of possibly multiple user names and associated passwords used for user authentication. It is used when the login local line conﬁguration command has been used."
+	},
+
+	"access-list":{
+		"scope": "plaintext",
+		"prefix": "access-list",
+		"body": "access-list",
+		"description": "A configuration mode command that deﬁnes the password required when using the enable command"
+	},
+	"access-class":{
+		"scope": "plaintext",
+		"prefix": "access-class",
+		"body": "access-class",
+		"description": "A configuration mode command that sets this Cisco device password that is required for any user to enter enable mode"
+	},
+
+	"ip access-list {standard | extended} {access-list-name | access-list-number}":{
+		"scope": "plaintext",
+		"prefix": "ip access-list",
+		"body": "ip access-list",
+		"description": "A configuration mode command that directs the Cisco IOS software to encrypt the passwords, CHAP secrets, and similar data saved in its configuration file"
+	},
+	"ip":{
+		"scope": "plaintext",
+		"prefix": "ip",
+		"body": "ip",
+		"description": "ip"
+	},
+	"standard":{
+		"scope": "plaintext",
+		"prefix": "standard",
+		"body": "standard",
+		"description": "standard"
+	},
+	"extended":{
+		"scope": "plaintext",
+		"prefix": "extended",
+		"body": "extended",
+		"description": "extended"
+	},
+
+	"permit source {source-wildcard}":{
+		"scope": "plaintext",
+		"prefix": "permit source",
+		"body": "permit source $1",
+		"description": "Conﬁgures a DNS domain name "
+	},
+	"permit":{
+		"scope": "plaintext",
+		"prefix": "permit",
+		"body": "permit",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+
+	"deny source {source-wildcard}":{
+		"scope": "plaintext",
+		"prefix": "deny source",
+		"body": "deny source $1",
+		"description": "A configuration mode command that creates and stores (in a hidden location in ﬂash memory) the keys that are required by SSH"
+	},
+	"deny":{
+		"scope": "plaintext",
+		"prefix": "deny",
+		"body": "deny",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"source":{
+		"scope": "plaintext",
+		"prefix": "source",
+		"body": "source",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+
+	"ntp peer {ip-address}":{
+		"scope": "plaintext",
+		"prefix": "ntp peer",
+		"body": "ntp peer $1.$2.$3.$4",
+		"description": "Used in vty line conﬁguration mode, deﬁnes whether Telnet or SSH access is allowed into this switch. Both values can be specified in a single command to allow both Telnet and SSH access (default settings)."
+	},
+	"ntp":{
+		"scope": "plaintext",
+		"prefix": "ntp",
+		"body": "ntp",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"peer":{
+		"scope": "plaintext",
+		"prefix": "peer",
+		"body": "peer",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+
+	"switchport port-security":{
+		"scope": "plaintext",
+		"prefix": "switchport port-security",
+		"body": "switchport port-security",
+		"description": "A configuration mode command that defines a standard IP access list"
+	},
+
+	"switchport port-security maximum maximum":{
+		"scope": "plaintext",
+		"prefix": "switchport port-security maximum maximum",
+		"body": "switchport port-security maximum maximum",
+		"description": "Restricts incoming and outgoing connections between a particular vty (into a basic Cisco device) and the addresses in an access list"
+	},
+	"maximum":{
+		"scope": "plaintext",
+		"prefix": "maximum",
+		"body": "maximum",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+
+	"switchport port-security mac-address {mac-addr | {sticky [mac-addr]}}":{
+		"scope": "plaintext",
+		"prefix": "switchport port-security mac-address",
+		"body": "switchport port-security mac-address $1",
+		"description": "A configuration mode command that defines an IP access list by name or number"
+	},
+	"mac-address":{
+		"scope": "plaintext",
+		"prefix": "mac-address",
+		"body": "mac-address",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+
+	"switchport port-security violation shutdown":{
+		"scope": "plaintext",
+		"prefix": "switchport port-security violation",
+		"body": "switchport port-security violation shutdown",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"shutdown":{
+		"scope": "plaintext",
+		"prefix": "shutdown",
+		"body": "shutdown",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"no":{
+		"scope": "plaintext",
+		"prefix": "no",
+		"body": "no",
+		"description": "no {command}"
+	},
+	"no shutdown":{
+		"scope": "plaintext",
+		"prefix": "no shutdown",
+		"body": "no shutdown",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+
+	"switchport port-security violation restrict":{
+		"scope": "plaintext",
+		"prefix": "switchport port-security violation",
+		"body": "switchport port-security violation restrict",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"switchport port-security violation protect":{
+		"scope": "plaintext",
+		"prefix": "switchport port-security violation",
+		"body": "switchport port-security violation protect",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"switchport":{
+		"scope": "plaintext",
+		"prefix": "switchport",
+		"body": "switchport",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"port-security":{
+		"scope": "plaintext",
+		"prefix": "port-security",
+		"body": "port-security",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"violation":{
+		"scope": "plaintext",
+		"prefix": "violation",
+		"body": "violation",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"restrict":{
+		"scope": "plaintext",
+		"prefix": "restrict",
+		"body": "restrict",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+	"protect":{
+		"scope": "plaintext",
+		"prefix": "protect",
+		"body": "protect",
+		"description": "Used in ACL configuration mode to set conditions to allow a packet to pass a named IP ACL. To remove a permit condition from an ACL, use the “no” form of this command."
+	},
+
+	"show port security {inteface-id}":{
+		"scope": "plaintext",
+		"prefix": "show port security",
+		"body": "show port security $1",
+		"description": "Used in ACL configuration mode to set conditions in a named IP ACL that will deny packets. To remove a deny condition from an ACL, use the “no” form of this command."
+	},
+	"port":{
+		"scope": "plaintext",
+		"prefix": "port",
+		"body": "port",
+		"description": "Used in ACL configuration mode to set conditions in a named IP ACL that will deny packets. To remove a deny condition from an ACL, use the “no” form of this command."
+	},
+	"security":{
+		"scope": "plaintext",
+		"prefix": "security",
+		"body": "security",
+		"description": "Used in ACL configuration mode to set conditions in a named IP ACL that will deny packets. To remove a deny condition from an ACL, use the “no” form of this command."
+	},
+
+	"logging {ip-address}":{
+		"scope": "plaintext",
+		"prefix": "logging",
+		"body": "logging $1.$2.$3.$4",
+		"description": "Used in global configuration mode to configure the software clock to synchronize a peer or to be synchronized by a peer"
+	},
+
+	"logging trap level":{
+		"scope": "plaintext",
+		"prefix": "logging trap level",
+		"body": "logging trap level",
+		"description": "Used in interface configuration mode to enable port security on the interface"
+	},
+	"trap":{
+		"scope": "plaintext",
+		"prefix": "trap",
+		"body": "logging trap level",
+		"description": "Used in interface configuration mode to enable port security on the interface"
+	},
+	"level":{
+		"scope": "plaintext",
+		"prefix": "level",
+		"body": "level",
+		"description": "Used in interface configuration mode to enable port security on the interface"
+	},
+
+	"show logging":{
+		"scope": "plaintext",
+		"prefix": "show logging",
+		"body": "show logging",
+		"description": "Used in interface configuration mode to set the maximum number of secure MAC addresses on the port"
+	},
+	"show":{
+		"scope": "plaintext",
+		"prefix": "show",
+		"body": "show",
+		"description": "Used in interface configuration mode to set the maximum number of secure MAC addresses on the port"
+	},
+	"logging":{
+		"scope": "plaintext",
+		"prefix": "logging",
+		"body": "logging",
+		"description": "Used in interface configuration mode to set the maximum number of secure MAC addresses on the port"
+	},
+
+	"terminal monitor":{
+		"scope": "plaintext",
+		"prefix": "terminal monitor",
+		"body": "terminal monitor",
+		"description": "Used in interface configuration mode to add a MAC address to the list of secure MAC addresses. The “sticky” option configures the MAC addresses as sticky on the interface."
+	},
+	"terminal":{
+		"scope": "plaintext",
+		"prefix": "terminal",
+		"body": "terminal",
+		"description": "Used in interface configuration mode to add a MAC address to the list of secure MAC addresses. The “sticky” option configures the MAC addresses as sticky on the interface."
+	},
+	"monitor":{
+		"scope": "plaintext",
+		"prefix": "monitor",
+		"body": "monitor",
+		"description": "Used in interface configuration mode to add a MAC address to the list of secure MAC addresses. The “sticky” option configures the MAC addresses as sticky on the interface."
+	},
+	
+
+
+	// interface
+	"dialer":{
+		"scope": "plaintext",
+		"prefix": "dialer",
+		"body": "dialer",
+		"description": "dialer"
+	},
+	"dot11Radio":{
+		"scope": "plaintext",
+		"prefix": "dot11Radio",
+		"body": "dot11Radio",
+		"description": "dot11Radio"
+	},
+	"ethernet":{
+		"scope": "plaintext",
+		"prefix": "ethernet",
+		"body": "ethernet",
+		"description": "ethernet"
+	},
+	"fastEthernet":{
+		"scope": "plaintext",
+		"prefix": "fastEthernet",
+		"body": "fastEthernet",
+		"description": "fastEthernet"
+	},
+	"gigabitEthernet":{
+		"scope": "plaintext",
+		"prefix": "gigabitEthernet",
+		"body": "gigabitEthernet",
+		"description": "gigabitEthernet"
+	},
+	"loopback":{
+		"scope": "plaintext",
+		"prefix": "loopback",
+		"body": "loopback",
+		"description": "loopback"
+	},
+	"port-channel":{
+		"scope": "plainttext",
+		"prefix": "port-channel",
+		"body": "port-channel",
+		"description": "port-channel"
+	},
+	"serial":{
+		"scope": "plaintext",
+		"prefix": "serial",
+		"body": "serial",
+		"description": "serial"
+	},
+	"tunnel":{
+		"scope": "plaintext",
+		"prefix": "tunnel",
+		"body": "tunnel",
+		"description": "tunnel"
+	},
+	"virtual-Template":{
+		"scope": "plaintext",
+		"prefix": "virtual-Template",
+		"body": "virtual-Template",
+		"description": "virtual-Template"
+	},
+	"vlan":{
+		"scope": "plaintext",
+		"prefix": "vlan",
+		"body": "vlan",
+		"description": "vlan"
+	},
+	"range":{
+		"scope": "plaintext",
+		"prefix": "range",
+		"body": "range",
+		"description": "range"
+	}
+
+
+
+}
